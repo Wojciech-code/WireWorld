@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.MainWindow">
+  <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <toolbar id="9850e">
+        <constraints border-constraint="West"/>
+        <properties>
+          <background color="-659467"/>
+          <orientation value="1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="7f0c3" class="javax.swing.JLabel">
+            <constraints/>
+            <properties>
+              <background color="-12516342"/>
+              <foreground color="-4736069"/>
+              <horizontalTextPosition value="0"/>
+              <minimumSize width="48" height="16"/>
+              <text value="Siema"/>
+            </properties>
+          </component>
+          <component id="a734f" class="javax.swing.JButton" binding="openButton">
+            <constraints/>
+            <properties>
+              <autoscrolls value="false"/>
+              <background color="-5794926"/>
+              <defaultCapable value="false"/>
+              <foreground color="-4477013"/>
+              <text value="Otwórz"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+    </children>
+  </grid>
+</form>
