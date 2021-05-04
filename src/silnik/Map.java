@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Map implements Iterable<Cell> {
 
-    int rows;
-    int columns;
+    public int rows;
+    public int columns;
 
-    List<Cell> mapa;
+    public List<Cell> mapa;
 
     {
         mapa = new ArrayList<Cell>();

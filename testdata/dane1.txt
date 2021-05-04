@@ -1,7 +1,3 @@
-7 12
-Diode 1 1
-Diode 5 1
-Conductor 2 8
-Conductor 3 8 
-Conductor 4 8
-Head 1 1
+10 10
+Conductor 1 1
+Diode 5 5
