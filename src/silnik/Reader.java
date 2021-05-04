@@ -24,20 +24,32 @@ public class Reader {
             s = line.split("\\s+");
              m = new Map(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
 
-            while((line=br.readLine()) != null ){
+            while((line=br.readLine()) != null ) {
                 s = line.split("\\s+");
                 int row = Integer.parseInt(s[1]);
                 int column = Integer.parseInt(s[2]);
 
-                if(s[0].equals("Diode")){
+                if (s[0].equals("Diode")) {
                     Gate d = new Diode();
                     d.setGate(m, row, column);
-                }else if(s[0].equals("Head")){
+                } else if (s[0].equals("Head")) {
                     Head.setHead(m, row, column);
-                }else if(s[0].equals("Tail")){
+                } else if (s[0].equals("Tail")) {
                     Tail.setTail(m, row, column);
-                }else if(s[0].equals("Conductor")){
+                } else if (s[0].equals("Conductor")) {
                     Conductor.setConductor(m, row, column);
+                } else if (s[0].equals("OrGate")) {
+                    Gate o = new OrGate();
+                    o.setGate(m, row, column);
+                } else if (s[0].equals("XorGate")) {
+                    Gate o = new XorGate();
+                    o.setGate(m, row, column);
+                } else if (s[0].equals("AndNotGate")) {
+                    Gate o = new AndNotGate();
+                    o.setGate(m, row, column);
+                } else if (s[0].equals("FlipFlopGate")) {
+                    Gate o = new FlipFlopGate();
+                    o.setGate(m, row, column);
                 }
             }
 
