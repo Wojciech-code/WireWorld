@@ -2,6 +2,7 @@ package gui;
 
 import silnik.Map;
 import silnik.Reader;
+import silnik.pisanieDoPliku.SaveToFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +14,14 @@ public class LifePanel extends JPanel implements ActionListener {
 
     int liczbaIteracji = 10;
     int iteratorRoboczy = 0;
+
+    int liczbaPoIluzapiac =0;
+    String nazwaPliku;
+
     int delay = 500;
     Timer timer = new Timer(delay, this);
     File selected;
-    String filePath;
+    private  String filePath;
     Map mapa;
     Board  board = new Board();
     public JButton start = new JButton("Start");
@@ -24,6 +29,13 @@ public class LifePanel extends JPanel implements ActionListener {
     public JButton next = new JButton("Next");
     public JTextField ileIteracji = new JTextField();
     public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
+
+    public JTextField poIluZapisac = new JTextField();
+    public JLabel poIluZapisacLabel = new JLabel("Podaj którą iteracje zapiac:");
+
+    public JLabel nazwaDoZapisuLabel = new JLabel("Podaj sciezke do zapisania pliku:");
+    public JTextField nazwaDozapisu = new JTextField();
+
     public JLabel ktoraIteracja = new JLabel("Iteracja: " + 0);
 
     int canvasW = 600;
@@ -37,10 +49,20 @@ public class LifePanel extends JPanel implements ActionListener {
         add(ileIteracji);
         add(ileIteracjiLabel);
         add(ktoraIteracja);
+
+        add(poIluZapisac);
+        add(poIluZapisacLabel);
+        add(nazwaDozapisu);
+        add(nazwaDoZapisuLabel);
+
         open.addActionListener(this);
         start.addActionListener(this);
         next.addActionListener(this);
         ileIteracji.addActionListener(this);
+
+        poIluZapisac.addActionListener(this);
+        nazwaDozapisu.addActionListener(this);
+
         board.setBounds(200, 50, canvasW, canvasH);
         start.setBackground(Color.gray);
         open.setBackground(Color.gray);
@@ -50,6 +72,13 @@ public class LifePanel extends JPanel implements ActionListener {
         next.setBounds(1, 145, 75, 50);
         ileIteracji.setBounds(40,240, 25, 25);
         ileIteracjiLabel.setBounds(1,200,200 ,50 );
+
+        poIluZapisac.setBounds(40,300, 25, 25);
+        poIluZapisacLabel.setBounds(1,260,200 ,50 );
+
+        nazwaDozapisu.setBounds(1,360, 150, 25);
+        nazwaDoZapisuLabel.setBounds(1,320,200 ,50 );
+
         ktoraIteracja.setBounds(200, 625, 100, 100);
         setSize(1000, 750);
         setLayout(null);
@@ -79,6 +108,7 @@ public class LifePanel extends JPanel implements ActionListener {
             }
         }else if(source == start){
             timer.start();
+           // SaveToFile save = new SaveToFile();
         }else if(source == next){
             mapa.update();
             iteratorRoboczy++;
@@ -94,8 +124,19 @@ public class LifePanel extends JPanel implements ActionListener {
         }else if(source == ileIteracji){
             liczbaIteracji = Integer.parseInt(ileIteracji.getText());
             System.out.println("liczba iteracji:" + liczbaIteracji);
+        }else if(source == nazwaDozapisu){
+            nazwaPliku= nazwaDozapisu.getText();
+            System.out.println("nazwa pliku " + nazwaPliku);
+            SaveToFile save = new SaveToFile();
+            save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
+        }else if(source == poIluZapisac){
+            liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
+            System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
+           // SaveToFile save = new SaveToFile();
+           // save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
         }
 
         repaint();
     }
+
 }
