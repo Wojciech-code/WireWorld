@@ -31,7 +31,7 @@ public class LifePanel extends JPanel implements ActionListener {
     public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
 
     public JTextField poIluZapisac = new JTextField();
-    public JLabel poIluZapisacLabel = new JLabel("Podaj którą iteracje zapiac:");
+    public JLabel poIluZapisacLabel = new JLabel("Podaj po ilu iteracjach zapiac:");
 
     public JLabel nazwaDoZapisuLabel = new JLabel("Podaj sciezke do zapisania pliku:");
     public JTextField nazwaDozapisu = new JTextField();
@@ -88,55 +88,52 @@ public class LifePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        Object source = e.getSource();
-        if(source == open) {
-            iteratorRoboczy = 0;
-            ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-            JFileChooser chooser = new JFileChooser();
-            int decision = chooser.showOpenDialog(null);
-            if (decision == JFileChooser.APPROVE_OPTION) {
-                selected = chooser.getSelectedFile();
-                filePath = selected.getAbsolutePath();
-                Reader reader = new Reader();
-                reader.setFilepath(filePath);
-                reader.read();
-                mapa = reader.setMap();
-                board.mapa = reader.setMap();
-                board.wymiar = mapa.rows;
-                board.size = board.boardSize/board.wymiar;
-            }
-        }else if(source == start){
-            timer.start();
-           // SaveToFile save = new SaveToFile();
-        }else if(source == next){
-            mapa.update();
-            iteratorRoboczy++;
-            ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-        }else if(timer.isRunning()){
-            mapa.update();
-            iteratorRoboczy++;
-            ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-            if(iteratorRoboczy == liczbaIteracji) {
-                timer.stop();
+            Object source = e.getSource();
+            if (source == open) {
                 iteratorRoboczy = 0;
+                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                JFileChooser chooser = new JFileChooser();
+                int decision = chooser.showOpenDialog(null);
+                if (decision == JFileChooser.APPROVE_OPTION) {
+                    selected = chooser.getSelectedFile();
+                    filePath = selected.getAbsolutePath();
+                    Reader reader = new Reader();
+                    reader.setFilepath(filePath);
+                    reader.read();
+                    mapa = reader.setMap();
+                    board.mapa = reader.setMap();
+                    board.wymiar = mapa.rows;
+                    board.size = board.boardSize / board.wymiar;
+                }
+            } else if (source == start) {
+                iteratorRoboczy = 0;
+                timer.start();
+            } else if (source == next) {
+                mapa.update();
+                iteratorRoboczy++;
+                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+            } else if (timer.isRunning()) {
+                mapa.update();
+                iteratorRoboczy++;
+                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                if (iteratorRoboczy % liczbaIteracji == 0) {
+                    timer.stop();
+                    iteratorRoboczy = 0;
+                }
+            } else if (source == ileIteracji) {
+                liczbaIteracji = Integer.parseInt(ileIteracji.getText());
+                System.out.println("liczba iteracji:" + liczbaIteracji);
+            } else if (source == nazwaDozapisu) {
+                nazwaPliku = nazwaDozapisu.getText();
+                System.out.println("nazwa pliku " + nazwaPliku);
+                SaveToFile save = new SaveToFile();
+                save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
+            } else if (source == poIluZapisac) {
+                liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
+                System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
             }
-        }else if(source == ileIteracji){
-            liczbaIteracji = Integer.parseInt(ileIteracji.getText());
-            System.out.println("liczba iteracji:" + liczbaIteracji);
-        }else if(source == nazwaDozapisu){
-            nazwaPliku= nazwaDozapisu.getText();
-            System.out.println("nazwa pliku " + nazwaPliku);
-            SaveToFile save = new SaveToFile();
-            save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
-        }else if(source == poIluZapisac){
-            liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
-            System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
-           // SaveToFile save = new SaveToFile();
-           // save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
-        }
 
-        repaint();
-    }
+            repaint();
+        }
 
 }

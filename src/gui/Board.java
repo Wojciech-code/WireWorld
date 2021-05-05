@@ -26,7 +26,6 @@ public class Board extends JPanel {
                 g.drawLine(0, size * i, boardSize, i * size);
                 g.drawLine(i * size, 0, i * size, boardSize);
             }
-            //rect(g);
         }
     }
 

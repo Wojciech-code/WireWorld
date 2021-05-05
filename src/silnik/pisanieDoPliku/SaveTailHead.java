@@ -19,12 +19,12 @@ public class SaveTailHead {
                     case (2):
                         // writer.println("Tail " + c.row + " " + c.column);
                         writer.write("Tail " + c.row + " " + c.column + "\n");
-                        System.out.println("Tail " + c.row + " " + c.column);
+                        // System.out.println("Tail " + c.row + " " + c.column);
                         break;
                     case (3):
                         // writer.println("Head " + c.row + " " + c.column);
                         writer.write("Head " + c.row + " " + c.column + "\n");
-                        System.out.println("Head " + c.row + " " + c.column);
+                       // System.out.println("Head " + c.row + " " + c.column);
                         break;
                 }
             }

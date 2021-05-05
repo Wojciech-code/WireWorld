@@ -22,7 +22,7 @@ public class Reader {
             line = br.readLine();
             String[] s;
             s = line.split("\\s+");
-             m = new Map(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
+             m = new Map(Integer.parseInt(s[0]), Integer.parseInt(s[0]));
 
             while((line=br.readLine()) != null ) {
                 s = line.split("\\s+");

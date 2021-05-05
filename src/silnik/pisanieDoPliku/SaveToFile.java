@@ -12,7 +12,7 @@ public class SaveToFile {
     Map m;
 
     public void SaveToFile(int n, String s,String nazwa) {
-        File zapis = new File(nazwa);
+        File zapis = new File(nazwa + ".txt");
         //System.out.println(s);
 
         silnik.Reader r = new Reader();
