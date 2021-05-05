@@ -64,26 +64,26 @@ public class LifePanel extends JPanel implements ActionListener {
         nazwaDozapisu.addActionListener(this);
 
         board.setBounds(200, 50, canvasW, canvasH);
-        start.setBackground(Color.gray);
-        open.setBackground(Color.gray);
-        next.setBackground(Color.gray);
-        open.setBounds(1, 5, 75, 50);
-        start.setBounds(1, 75, 75 , 50);
-        next.setBounds(1, 145, 75, 50);
+        start.setBackground(Color.white);
+        open.setBackground(Color.white);
+        next.setBackground(Color.white);
+        open.setBounds(25, 5, 75, 50);
+        start.setBounds(25, 75, 75 , 50);
+        next.setBounds(25, 145, 75, 50);
         ileIteracji.setBounds(40,240, 25, 25);
-        ileIteracjiLabel.setBounds(1,200,200 ,50 );
+        ileIteracjiLabel.setBounds(10,200,200 ,50 );
 
         poIluZapisac.setBounds(40,300, 25, 25);
-        poIluZapisacLabel.setBounds(1,260,200 ,50 );
+        poIluZapisacLabel.setBounds(10,260,200 ,50 );
 
-        nazwaDozapisu.setBounds(1,360, 150, 25);
-        nazwaDoZapisuLabel.setBounds(1,320,200 ,50 );
+        nazwaDozapisu.setBounds(25,360, 150, 25);
+        nazwaDoZapisuLabel.setBounds(10,320,200 ,50 );
 
         ktoraIteracja.setBounds(200, 625, 100, 100);
         setSize(1000, 750);
         setLayout(null);
         setVisible(true);
-        setBackground(Color.pink);
+        setBackground(new Color(186, 206, 205));
     }
 
     @Override

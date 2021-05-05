@@ -15,6 +15,7 @@ public class LifeFrame extends JFrame {
         add(lf);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("WireWorld najlepsza praca");
+        setLocation(475,150);
     }
 
 public static void main(String [] args){
