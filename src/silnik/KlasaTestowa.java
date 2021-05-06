@@ -11,8 +11,8 @@ public class KlasaTestowa {
         int columns = 10;
         Map m = new Map(rows, columns);
 
-        Diode diode = new Diode();
-        diode.setGate(m, 2, 1);
+        Diode diode = new Diode(m);
+        diode.setGate( 2, 1);
 
         for(Cell c : m) {
             if (c.row == 2 && c.column == 2)

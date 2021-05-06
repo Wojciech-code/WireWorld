@@ -31,7 +31,7 @@ public class LifePanel extends JPanel implements ActionListener {
     public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
 
     public JTextField poIluZapisac = new JTextField();
-    public JLabel poIluZapisacLabel = new JLabel("Podaj po ilu iteracjach zapiac:");
+    public JLabel poIluZapisacLabel = new JLabel("Podaj po ilu iteracjach zapisać:");
 
     public JLabel nazwaDoZapisuLabel = new JLabel("Podaj sciezke do zapisania pliku:");
     public JTextField nazwaDozapisu = new JTextField();

@@ -3,29 +3,35 @@ package bramki.logiczne;
 import silnik.Cell;
 import silnik.Map;
 
-public class OrGate implements Gate{
+public class OrGate extends Gate{
+
+
+    public OrGate(Map mapa) {
+        super(mapa);
+    }
 
 
     @Override
-    public void setGate(Map m, int row, int column) {
+    public void setGate( int row, int column) {
 
-        for(Cell c : m){
-            if((c.row == row && c.column == column) ||
-                    ( c.row == row && c.column == column+1) ||
-                    ( c.row == row && c.column == column+2) ||
-                    (c.row == row+4 && c.column == column) ||
-                    ( c.row == row+4 && c.column == column+1) ||
-                    ( c.row == row+4 && c.column == column+2) ||
+        for(Cell c : mapa){
+            metodaRobocza(c);
+            if((x == row && y == column) ||
+                    ( x == row && y == column+1) ||
+                    ( x == row && y == column+2) ||
+                    (x == row+4 && y == column) ||
+                    ( x == row+4 && y == column+1) ||
+                    ( x == row+4 && y == column+2) ||
 
-                    ( c.row == row+2 && c.column == column+2) ||
+                    ( x == row+2 && y == column+2) ||
 
-                    ( c.row == row+1 && c.column == column+3) ||
-                    ( c.row == row+2 && c.column == column+3) ||
-                    ( c.row == row+3 && c.column == column+3) ||
+                    ( x == row+1 && y == column+3) ||
+                    ( x == row+2 && y == column+3) ||
+                    ( x == row+3 && y == column+3) ||
 
-                    ( c.row == row+2 && c.column == column+4) ||
-                    ( c.row == row+2 && c.column == column+5) ||
-                    ( c.row == row+2 && c.column == column+6))
+                    ( x == row+2 && y == column+4) ||
+                    ( x == row+2 && y == column+5) ||
+                    ( x == row+2 && y == column+6))
 
                 c.setConductor();
             }
