@@ -1,9 +1,10 @@
 package silnik;
 
 import bramki.logiczne.*;
-import bramki.logiczne.odwrócone180.AndNotGateR;
-import bramki.logiczne.odwrócone180.DiodeR;
-import bramki.logiczne.odwróconeDoDołu.*;
+import bramki.logiczne.normal.*;
+import bramki.logiczne.reversed180.AndNotGateR;
+import bramki.logiczne.reversed180.DiodeR;
+import bramki.logiczne.reversed90.*;
 
 import java.io.*;
 

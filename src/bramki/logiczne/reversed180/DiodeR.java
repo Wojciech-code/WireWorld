@@ -1,4 +1,4 @@
-package bramki.logiczne.odwrócone180;
+package bramki.logiczne.reversed180;
 
 import bramki.logiczne.Gate;
 import silnik.Cell;

@@ -1,6 +1,6 @@
-package bramki.logiczne.odwróconeDoDołu;
+package bramki.logiczne.reversed90;
 
-import bramki.logiczne.FlipFlopGate;
+import bramki.logiczne.normal.FlipFlopGate;
 import silnik.Cell;
 import silnik.Map;
 

@@ -1,5 +1,6 @@
-package bramki.logiczne;
+package bramki.logiczne.normal;
 
+import bramki.logiczne.Gate;
 import silnik.Cell;
 import silnik.Map;
 

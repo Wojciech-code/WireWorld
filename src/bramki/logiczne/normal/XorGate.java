@@ -1,9 +1,10 @@
-package bramki.logiczne;
+package bramki.logiczne.normal;
 
+import bramki.logiczne.Gate;
 import silnik.Cell;
 import silnik.Map;
 
-public class XorGate extends Gate{
+public class XorGate extends Gate {
 
     public XorGate(Map mapa) {
         super(mapa);

@@ -1,6 +1,6 @@
-package bramki.logiczne.odwróconeDoDołu;
+package bramki.logiczne.reversed90;
 
-import bramki.logiczne.XorGate;
+import bramki.logiczne.normal.XorGate;
 import silnik.Cell;
 import silnik.Map;
 

@@ -27,6 +27,7 @@ public class LifePanel extends JPanel implements ActionListener {
     public JButton start = new JButton("Start");
     public JButton open = new JButton("Open");
     public JButton next = new JButton("Next");
+    public JButton restart = new JButton("Restart");
     public JTextField ileIteracji = new JTextField();
     public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
 
@@ -54,11 +55,13 @@ public class LifePanel extends JPanel implements ActionListener {
         add(poIluZapisacLabel);
         add(nazwaDozapisu);
         add(nazwaDoZapisuLabel);
+        add(restart);
 
         open.addActionListener(this);
         start.addActionListener(this);
         next.addActionListener(this);
         ileIteracji.addActionListener(this);
+        restart.addActionListener(this);
 
         poIluZapisac.addActionListener(this);
         nazwaDozapisu.addActionListener(this);
@@ -67,11 +70,13 @@ public class LifePanel extends JPanel implements ActionListener {
         start.setBackground(Color.white);
         open.setBackground(Color.white);
         next.setBackground(Color.white);
+        restart.setBackground(Color.white);
         open.setBounds(25, 5, 75, 50);
         start.setBounds(25, 75, 75 , 50);
         next.setBounds(25, 145, 75, 50);
         ileIteracji.setBounds(40,240, 25, 25);
         ileIteracjiLabel.setBounds(10,200,200 ,50 );
+        restart.setBounds(25, 475, 85, 50);
 
         poIluZapisac.setBounds(40,300, 25, 25);
         poIluZapisacLabel.setBounds(10,260,200 ,50 );
@@ -131,6 +136,16 @@ public class LifePanel extends JPanel implements ActionListener {
             } else if (source == poIluZapisac) {
                 liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
                 System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
+            } else if( source == restart){
+                Reader reader = new Reader();
+                reader.setFilepath(filePath);
+                reader.read();
+                mapa = reader.setMap();
+                board.mapa = reader.setMap();
+                board.wymiar = mapa.rows;
+                board.size = board.boardSize / board.wymiar;
+                iteratorRoboczy = 0;
+                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
             }
 
             repaint();

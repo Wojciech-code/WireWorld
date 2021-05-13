@@ -1,9 +1,10 @@
-package bramki.logiczne;
+package bramki.logiczne.normal;
 
+import bramki.logiczne.Gate;
 import silnik.Cell;
 import silnik.Map;
 
-public class AndNotGate extends Gate{
+public class AndNotGate extends Gate {
 
 
     public AndNotGate(Map mapa) {

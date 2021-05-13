@@ -1,6 +1,6 @@
-package bramki.logiczne.odwróconeDoDołu;
+package bramki.logiczne.reversed90;
 
-import bramki.logiczne.AndNotGate;
+import bramki.logiczne.normal.AndNotGate;
 import silnik.Cell;
 import silnik.Map;
 
