@@ -1,12 +1,12 @@
-package bramki.logiczne.odwrócone;
+package bramki.logiczne.odwróconeDoDołu;
 
 import bramki.logiczne.FlipFlopGate;
 import silnik.Cell;
 import silnik.Map;
 
-public class FlipFlopR extends FlipFlopGate {
+public class FlipFlopD extends FlipFlopGate {
 
-    public FlipFlopR(Map mapa) {
+    public FlipFlopD(Map mapa) {
         super(mapa);
     }
 

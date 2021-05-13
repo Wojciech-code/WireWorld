@@ -1,7 +1,9 @@
 package silnik;
 
 import bramki.logiczne.*;
-import bramki.logiczne.odwrócone.*;
+import bramki.logiczne.odwrócone180.AndNotGateR;
+import bramki.logiczne.odwrócone180.DiodeR;
+import bramki.logiczne.odwróconeDoDołu.*;
 
 import java.io.*;
 
@@ -34,11 +36,14 @@ public class Reader {
                     if(s[3].equals("Normal")) {
                          d = new Diode(m);
                         d.setGate( row, column);
-                    }else if(s[3].equals("Reversed")){
+                    }else if(s[3].equals("Down")){
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
-                         d = new DiodeR(m);
+                         d = new DiodeD(m);
                         d.setGate( row, column);
+                    }else if(s[3].equals("Reversed")){
+                        d = new DiodeR(m);
+                        d.setGate(row, column);
                     }
                 } else if (s[0].equals("Head")) {
                     Head.setHead( m,row, column);
@@ -51,10 +56,10 @@ public class Reader {
                     if(s[3].equals("Normal")) {
                         d = new OrGate(m);
                         d.setGate( row, column);
-                    }else if(s[3].equals("Reversed")){
+                    }else if(s[3].equals("Down")){
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
-                        d = new OrGateR(m);
+                        d = new OrGateD(m);
                         d.setGate( row, column);
                     }
                 } else if (s[0].equals("XorGate")) {
@@ -62,10 +67,10 @@ public class Reader {
                     if(s[3].equals("Normal")) {
                         d = new XorGate(m);
                         d.setGate( row, column);
-                    }else if(s[3].equals("Reversed")){
+                    }else if(s[3].equals("Down")){
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
-                        d = new XorGateR(m);
+                        d = new XorGateD(m);
                         d.setGate( row, column);
                     }
                 } else if (s[0].equals("AndNotGate") ){
@@ -73,9 +78,12 @@ public class Reader {
                     if(s[3].equals("Normal")) {
                         d = new AndNotGate(m);
                         d.setGate( row, column);
-                    }else if(s[3].equals("Reversed")){
+                    }else if(s[3].equals("Down")){
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
+                        d = new AndNotGateD(m);
+                        d.setGate( row, column);
+                    }else if(s[3].equals("Reversed")){
                         d = new AndNotGateR(m);
                         d.setGate( row, column);
                     }
@@ -84,10 +92,10 @@ public class Reader {
                     if(s[3].equals("Normal")) {
                         d = new FlipFlopGate(m);
                         d.setGate( row, column);
-                    }else if(s[3].equals("Reversed")){
+                    }else if(s[3].equals("Down")){
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
-                        d = new FlipFlopR(m);
+                        d = new FlipFlopD(m);
                         d.setGate( row, column);
                     }
                 }

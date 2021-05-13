@@ -1,11 +1,11 @@
-package bramki.logiczne.odwrócone;
+package bramki.logiczne.odwróconeDoDołu;
 
 import bramki.logiczne.AndNotGate;
 import silnik.Cell;
 import silnik.Map;
 
-public class AndNotGateR extends AndNotGate {
-    public AndNotGateR(Map mapa) {
+public class AndNotGateD extends AndNotGate {
+    public AndNotGateD(Map mapa) {
         super(mapa);
     }
     @Override

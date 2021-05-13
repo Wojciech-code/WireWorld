@@ -1,11 +1,11 @@
-package bramki.logiczne.odwrócone;
+package bramki.logiczne.odwróconeDoDołu;
 
-import bramki.logiczne.XorGate;
+import bramki.logiczne.OrGate;
 import silnik.Cell;
 import silnik.Map;
 
-public class XorGateR extends XorGate {
-    public XorGateR(Map mapa) {
+public class OrGateD extends OrGate {
+    public OrGateD(Map mapa) {
         super(mapa);
     }
     @Override
