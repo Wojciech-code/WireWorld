@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Map implements Iterable<Cell> {
 
-    public int rows;
-    public int columns;
+    private int rows;
+    private int columns;
 
-    public List<Cell> mapa;
+    private List<Cell> mapa;
 
     {
         mapa = new ArrayList<Cell>();
@@ -64,5 +64,12 @@ public class Map implements Iterable<Cell> {
     @Override
     public Iterator<Cell> iterator() {
         return new CellIterator((ArrayList<Cell>) mapa);
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+    public int getRows(){
+        return rows;
     }
 }

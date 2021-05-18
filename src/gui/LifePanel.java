@@ -97,7 +97,7 @@ public class LifePanel extends JPanel implements ActionListener {
                     reader.read();
                     mapa = reader.setMap();
                     board.mapa = reader.setMap();
-                    board.wymiar = mapa.rows;
+                    board.wymiar = mapa.getRows();
                     board.size = board.boardSize / board.wymiar;
                 }
             } else if (source == start) {
@@ -132,7 +132,7 @@ public class LifePanel extends JPanel implements ActionListener {
                 reader.read();
                 mapa = reader.setMap();
                 board.mapa = reader.setMap();
-                board.wymiar = mapa.rows;
+                board.wymiar = mapa.getRows();
                 board.size = board.boardSize / board.wymiar;
                 iteratorRoboczy = 0;
                 ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
