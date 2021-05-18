@@ -1,8 +1,5 @@
 package silnik.pisanieDoPliku;
 
-import bramki.logiczne.*;
-import gui.LifePanel;
-import silnik.Cell;
 import silnik.Map;
 import silnik.Reader;
 
@@ -19,7 +16,7 @@ public class SaveToFile {
         r.setFilepath(s);
         r.read();
         Map m = r.setMap();
-        m.iterate2(n);
+        m.iterate(n);
 
         SaveSizeAndGates save1 = new SaveSizeAndGates();
         SaveTailHead save2 = new SaveTailHead();

@@ -1,0 +1,22 @@
+60
+FlipFlopGate 1 2 Down
+XorGate 1 15 Down
+Diode 1 27 Down
+AndNotGate 1 35 Down
+OrGate 1 47 Reversed
+FlipFlopGate 16 20 Normal
+XorGate 16 2 Normal
+Diode 34 2 Normal
+AndNotGate 30 18 Normal
+OrGate 42 10 Normal
+Diode 50 45 Reversed
+Head 1 2
+Head 1 15
+Head 1 27
+Head 1 35
+Head 16 20
+Head 16 2
+Head 34 2
+Head 30 18
+Head 42 10
+Head 50 45

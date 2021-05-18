@@ -7,7 +7,7 @@ public class Head {
 
     public static void setHead(Map m, int row, int column) {
         for (Cell c : m) {
-            if (c.row == row && c.column == column) {
+            if (c.getRow() == row && c.getColumn() == column) {
                 c.setHead();
             }
         }

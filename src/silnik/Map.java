@@ -42,19 +42,13 @@ public class Map implements Iterable<Cell> {
         }
     }
 
+
     public void iterate(int n){
-        draw();
-        for(int i = 0; i < n; i++){
-            update();
-            draw();
-        }
-    }
-    public void iterate2(int n){
         for(int i = 0; i < n; i++){
             update();
         }
     }
-    //To raczej tymczasowe żeby wykorzystać w testach
+
     public void draw(){
         int n = 0;
         for (Cell c : mapa) {

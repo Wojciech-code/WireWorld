@@ -2,24 +2,24 @@ package silnik;
 
 public class Rules {
 
-    public static void countNeigh(Cell c, Map m){ //count heads
+    protected static void countNeigh(Cell c, Map m){ //count heads
         c.numberOfHeads = 0;
         for(Cell e : m){
-            if(e.row == c.row-1 && ( e.column == c.column-1 || e.column == c.column || e.column == c.column+1 )){
-                if(e.state == 3)
+            if(e.getRow() == c.getRow()-1 && ( e.getColumn() == c.getColumn()-1 || e.getColumn() == c.getColumn() || e.getColumn() == c.getColumn()+1 )){
+                if(e.getState() == 3)
                     c.numberOfHeads++;
-            }else if(e.row == c.row && ( e.column == c.column-1 || e.column == c.column+1 )){
-                if(e.state == 3)
+            }else if(e.getRow() == c.getRow() && ( e.getColumn() == c.getColumn()-1 || e.getColumn() == c.getColumn()+1 )){
+                if(e.getState() == 3)
                     c.numberOfHeads++;
-            }else if(e.row == c.row+1 && ( e.column == c.column-1 || e.column == c.column || e.column == c.column+1 )){
-                if(e.state == 3)
+            }else if(e.getRow() == c.getRow()+1 && ( e.getColumn() == c.getColumn()-1 || e.getColumn() == c.getColumn() || e.getColumn() == c.getColumn()+1 )){
+                if(e.getState() == 3)
                     c.numberOfHeads++;
             }
         }
 
     }
 
-    public static void changeState(Cell c) {
+    protected static void changeState(Cell c) {
 
         switch (c.getState()){
 

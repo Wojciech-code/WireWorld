@@ -14,17 +14,7 @@ public class LifeFrame extends JFrame {
         lf = new LifePanel();
         add(lf);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("WireWorld najlepsza praca");
-        setLocation(475,150);
+        setTitle("WireWorld");
+        setLocation(350,60);
     }
-
-public static void main(String [] args){
-
-    javax.swing.SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-           LifeFrame window = new LifeFrame();
-        }
-    });
-}
-
 }

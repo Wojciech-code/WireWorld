@@ -8,9 +8,9 @@ package silnik;
 
 public class Cell {
 
-    public int row;
-    public int column;
-    int state;
+    private int row;
+    private int column;
+    private int state;
     int numberOfHeads;
 
     public Cell(int row, int column){
@@ -41,5 +41,12 @@ public class Cell {
 
     public String toString(){
         return String.valueOf(state);
+    }
+
+    public int getColumn() {
+        return column;
+    }
+    public int getRow(){
+        return row;
     }
 }

@@ -18,16 +18,16 @@ public class LifePanel extends JPanel implements ActionListener {
     int liczbaPoIluzapiac =0;
     String nazwaPliku;
 
-    int delay = 500;
+    int delay = 650;
     Timer timer = new Timer(delay, this);
     File selected;
     private  String filePath;
     Map mapa;
     Board  board = new Board();
-    public JButton start = new JButton("Start");
-    public JButton open = new JButton("Open");
-    public JButton next = new JButton("Next");
-    public JButton restart = new JButton("Restart");
+    public MyButton start = new MyButton("Start");
+    public MyButton open = new MyButton("Open");
+    public MyButton next = new MyButton("Next");
+    public MyButton restart = new MyButton("Restart");
     public JTextField ileIteracji = new JTextField();
     public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
 
@@ -39,52 +39,42 @@ public class LifePanel extends JPanel implements ActionListener {
 
     public JLabel ktoraIteracja = new JLabel("Iteracja: " + 0);
 
-    int canvasW = 600;
-    int canvasH = 600;
-
     public LifePanel() {
         add(board);
         add(open);
         add(start);
         add(next);
+        add(restart);
         add(ileIteracji);
         add(ileIteracjiLabel);
         add(ktoraIteracja);
-
         add(poIluZapisac);
         add(poIluZapisacLabel);
         add(nazwaDozapisu);
         add(nazwaDoZapisuLabel);
-        add(restart);
 
         open.addActionListener(this);
         start.addActionListener(this);
         next.addActionListener(this);
         ileIteracji.addActionListener(this);
         restart.addActionListener(this);
-
         poIluZapisac.addActionListener(this);
         nazwaDozapisu.addActionListener(this);
 
-        board.setBounds(200, 50, canvasW, canvasH);
-        start.setBackground(Color.white);
-        open.setBackground(Color.white);
-        next.setBackground(Color.white);
-        restart.setBackground(Color.white);
-        open.setBounds(25, 5, 75, 50);
-        start.setBounds(25, 75, 75 , 50);
-        next.setBounds(25, 145, 75, 50);
-        ileIteracji.setBounds(40,240, 25, 25);
-        ileIteracjiLabel.setBounds(10,200,200 ,50 );
-        restart.setBounds(25, 475, 85, 50);
+        board.setBounds(245, 15, board.boardSize, board.boardSize);
+        open.setBounds(55, 35);
+        start.setBounds(55, 100);
+        next.setBounds(55, 165);
+        restart.setBounds(55, 230);
+        ileIteracji.setBounds(40,340, 25, 25);
+        ileIteracjiLabel.setBounds(10,300,200 ,50 );
+        poIluZapisac.setBounds(40,400, 25, 25);
+        poIluZapisacLabel.setBounds(10,360,200 ,50 );
+        nazwaDozapisu.setBounds(25,460, 150, 25);
+        nazwaDoZapisuLabel.setBounds(10,420,200 ,50 );
+        ktoraIteracja.setBounds(500, 632, 200, 100);
+        ktoraIteracja.setFont(new Font("Plain", Font.BOLD,20));
 
-        poIluZapisac.setBounds(40,300, 25, 25);
-        poIluZapisacLabel.setBounds(10,260,200 ,50 );
-
-        nazwaDozapisu.setBounds(25,360, 150, 25);
-        nazwaDoZapisuLabel.setBounds(10,320,200 ,50 );
-
-        ktoraIteracja.setBounds(200, 625, 100, 100);
         setSize(1000, 750);
         setLayout(null);
         setVisible(true);

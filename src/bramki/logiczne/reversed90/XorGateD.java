@@ -10,7 +10,7 @@ public class XorGateD extends XorGate {
     }
     @Override
     public void metodaRobocza(Cell c){
-        this.x = c.column;
-        this.y = c.row;
+        this.x = c.getColumn();
+        this.y = c.getRow();
     }
 }

@@ -9,8 +9,8 @@ public abstract class Gate {
     public int x,y;
 
     public void metodaRobocza(Cell c){
-        this.x = c.row;
-        this.y = c.column;
+        this.x = c.getRow();
+        this.y = c.getColumn();
     }
 
       public Gate(Map mapa){

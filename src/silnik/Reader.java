@@ -10,8 +10,8 @@ import java.io.*;
 
 public class Reader {
 
-    public Map m;
-    String filepath;
+    private Map m;
+    private String filepath;
 
    public void setFilepath(String filepath){
        this.filepath = filepath;
