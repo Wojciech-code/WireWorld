@@ -16,5 +16,7 @@ public class LifeFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("WireWorld");
         setLocation(350,60);
+        Image im = Toolkit.getDefaultToolkit().getImage(getClass().getResource("img.png"));
+        setIconImage(im);
     }
 }
