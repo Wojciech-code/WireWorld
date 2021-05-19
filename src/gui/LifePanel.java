@@ -63,7 +63,7 @@ public class LifePanel extends JPanel implements ActionListener {
         poIluZapisac.addActionListener(this);
         nazwaDozapisu.addActionListener(this);
 
-        board.setBounds(245, 15, board.boardSize, board.boardSize);
+        board.setBounds(245, 15, board.getBoardSize(), board.getBoardSize());
         open.setBounds(55, 35);
         start.setBounds(55, 100);
         next.setBounds(55, 165);
@@ -102,9 +102,9 @@ public class LifePanel extends JPanel implements ActionListener {
                     reader.setFilepath(filePath);
                     reader.read();
                     mapa = reader.setMap();
-                    board.mapa = reader.setMap();
+                    board.setMap(reader.setMap());
                     board.wymiar = mapa.getRows();
-                    board.size = board.boardSize / board.wymiar;
+                    board.setSize(board.getBoardSize() / board.wymiar);
                 }
             } else if (source == start) {
                 iteratorRoboczy = 0;
@@ -137,9 +137,9 @@ public class LifePanel extends JPanel implements ActionListener {
                 reader.setFilepath(filePath);
                 reader.read();
                 mapa = reader.setMap();
-                board.mapa = reader.setMap();
+                board.setMap(reader.setMap());
                 board.wymiar = mapa.getRows();
-                board.size = board.boardSize / board.wymiar;
+                board.setSize(board.getBoardSize() / board.wymiar);
                 iteratorRoboczy = 0;
                 ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
             }

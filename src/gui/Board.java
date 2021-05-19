@@ -8,19 +8,19 @@ import java.awt.*;
 
 public class Board extends JPanel {
 
-    Map mapa;
-    int wymiar;
-    int boardSize = 650;
-    int size;
+    private Map mapa;
+    protected int wymiar;
+    private int boardSize = 650;
+    private int size;
 
 
-    public Board(){
+    public Board() {
         setBackground(Color.BLACK);
     }
 
-    public void grid(Graphics g){
+    public void grid(Graphics g) {
 
-        if(wymiar != 0) {
+        if (wymiar != 0) {
             g.setColor(Color.gray);
             for (int i = 0; i <= boardSize / size; i++) {
                 g.drawLine(0, size * i, boardSize, i * size);
@@ -29,7 +29,7 @@ public class Board extends JPanel {
         }
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         grid(g);
         rect(g);
@@ -53,4 +53,15 @@ public class Board extends JPanel {
         }
     }
 
+    public void setMap(Map map) {
+        mapa = map;
+    }
+
+    public int getBoardSize() {
+        return boardSize;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 }
