@@ -3,20 +3,29 @@ FlipFlopGate 1 2 Down
 XorGate 1 15 Down
 Diode 1 27 Down
 AndNotGate 1 35 Down
-OrGate 1 47 Reversed
+OrGate 1 47 Down
 FlipFlopGate 16 20 Normal
 XorGate 16 2 Normal
 Diode 34 2 Normal
 AndNotGate 30 18 Normal
 OrGate 42 10 Normal
-Diode 50 45 Reversed
+AndNotGate 20 40 Reversed
+FlipFlopGate 30 40 Reversed
+OrGate 40 40 Reversed
+Diode 50 40 Reversed
+XorGate 40 55 Reversed
 Head 1 2
 Head 1 15
 Head 1 27
 Head 1 35
+Head 1 47
 Head 16 20
 Head 16 2
 Head 34 2
 Head 30 18
 Head 42 10
-Head 50 45
+Head 20 40
+Head 30 40
+Head 40 40
+Head 50 40
+Head 40 55

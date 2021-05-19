@@ -2,8 +2,7 @@ package silnik;
 
 import bramki.logiczne.*;
 import bramki.logiczne.normal.*;
-import bramki.logiczne.reversed180.AndNotGateR;
-import bramki.logiczne.reversed180.DiodeR;
+import bramki.logiczne.reversed180.*;
 import bramki.logiczne.reversed90.*;
 
 import java.io.*;
@@ -62,6 +61,9 @@ public class Reader {
                         column = Integer.parseInt(s[1]);
                         d = new OrGateD(m);
                         d.setGate( row, column);
+                    }else if(s[3].equals("Reversed")){
+                        d = new OrGateR(m);
+                        d.setGate( row, column);
                     }
                 } else if (s[0].equals("XorGate")) {
                     Gate d;
@@ -73,7 +75,11 @@ public class Reader {
                         column = Integer.parseInt(s[1]);
                         d = new XorGateD(m);
                         d.setGate( row, column);
+                    }else if(s[3].equals("Reversed")){
+                        d = new XorGateR(m);
+                        d.setGate( row, column);
                     }
+
                 } else if (s[0].equals("AndNotGate") ){
                     Gate d;
                     if(s[3].equals("Normal")) {
@@ -97,6 +103,9 @@ public class Reader {
                         row = Integer.parseInt(s[2]);
                         column = Integer.parseInt(s[1]);
                         d = new FlipFlopD(m);
+                        d.setGate( row, column);
+                    }else if(s[3].equals("Reversed")){
+                        d = new FlipFlopR(m);
                         d.setGate( row, column);
                     }
                 }
