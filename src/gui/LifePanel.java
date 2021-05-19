@@ -29,15 +29,17 @@ public class LifePanel extends JPanel implements ActionListener {
     public MyButton next = new MyButton("Next");
     public MyButton restart = new MyButton("Restart");
     public JTextField ileIteracji = new JTextField();
-    public JLabel ileIteracjiLabel = new JLabel("Podaj liczbę iteracji:");
+    public JLabel ileIteracjiLabel = new JLabel("Liczba iteracji:");
 
     public JTextField poIluZapisac = new JTextField();
-    public JLabel poIluZapisacLabel = new JLabel("Podaj po ilu iteracjach zapisać:");
+    public JLabel poIluZapisacLabel = new JLabel("Po ilu iteracjach zapisać:");
 
-    public JLabel nazwaDoZapisuLabel = new JLabel("Podaj sciezke do zapisania pliku:");
+    public JLabel nazwaDoZapisuLabel = new JLabel("Nazwa pliku do zapisu:");
     public JTextField nazwaDozapisu = new JTextField();
 
     public JLabel ktoraIteracja = new JLabel("Iteracja: " + 0);
+
+
 
     public LifePanel() {
         add(board);
@@ -66,14 +68,18 @@ public class LifePanel extends JPanel implements ActionListener {
         start.setBounds(55, 100);
         next.setBounds(55, 165);
         restart.setBounds(55, 230);
-        ileIteracji.setBounds(40,340, 25, 25);
-        ileIteracjiLabel.setBounds(10,300,200 ,50 );
-        poIluZapisac.setBounds(40,400, 25, 25);
-        poIluZapisacLabel.setBounds(10,360,200 ,50 );
-        nazwaDozapisu.setBounds(25,460, 150, 25);
-        nazwaDoZapisuLabel.setBounds(10,420,200 ,50 );
+        ileIteracji.setBounds(64,350, 25, 25);
+        ileIteracjiLabel.setBounds(35,310,200 ,50 );
+        poIluZapisacLabel.setBounds(25,370,200 ,50 );
+        nazwaDoZapisuLabel.setBounds(25,430,200 ,50 );
+        poIluZapisac.setBounds(75,410, 25, 25);
+        nazwaDozapisu.setBounds(25,470, 150, 25);
         ktoraIteracja.setBounds(500, 632, 200, 100);
         ktoraIteracja.setFont(new Font("Plain", Font.BOLD,20));
+
+        ileIteracjiLabel.setFont(new Font("Serif", Font.BOLD,16));
+        nazwaDoZapisuLabel.setFont(new Font("Serif", Font.BOLD,16));
+        poIluZapisacLabel.setFont(new Font("Serif", Font.BOLD,16));
 
         setSize(1000, 750);
         setLayout(null);
