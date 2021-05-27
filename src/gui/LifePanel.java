@@ -38,7 +38,24 @@ public class LifePanel extends JPanel implements ActionListener {
     public JTextField nazwaDozapisu = new JTextField();
 
     public JLabel ktoraIteracja = new JLabel("Iteracja: " + 0);
-
+    public MyButton instrukcja = new MyButton("Instrukcja");
+    String message = "Aby program zaczął pracę, wymagamy aby na samym początku został podany plik wejściowy z danymi o określonym formacie.\n" +
+            "Pierwsze co podajemy to wymiar mapy którą program będzie rysować (jedna wartość, ponieważ mapa jest kwadratem).\n" +
+            "Każda linijka danych wejściowych powinna zawiarać odrębny element który będzie rysowany na mapie.\n" +
+            "Po wymiarze mapy neleży określić bramki logiczne wraz z położeniem oraz konfiguracją.\n" +
+            "Na końcu należy podać pojedyncze komórki wraz z położeniem.\n" +
+            "Format:\n" +
+            "<Wymiar>" +
+            "<Bramka logiczna> <Wiersz> <Kolumna> <Konfiguracja>\n" +
+            "<Pojedyncza komórka> <Wiersz> <Kolumna>\n" +
+            "Dostępne bramki logiczne:\n" +
+            "AndNotGate, Diode, FlipFlopGate, XorGate, OrGate\n" +
+            "Dostępne konfiguracje: (czyli w którym kierunku ma być rysowana bramka)\n" +
+            "Normal, Reversed, Down\n" +
+            "Pojedyncze komórki:\n" +
+            "Head, Tail, Empty\n" +
+            "Jeśli liczba iteracji nie zostanie podana program domyślnie przyjmuje 10.\n" +
+            "Zatwierdzaj wprowadzone dane Enterem :).";
 
 
     public LifePanel() {
@@ -47,6 +64,7 @@ public class LifePanel extends JPanel implements ActionListener {
         add(start);
         add(next);
         add(restart);
+        add(instrukcja);
         add(ileIteracji);
         add(ileIteracjiLabel);
         add(ktoraIteracja);
@@ -60,6 +78,7 @@ public class LifePanel extends JPanel implements ActionListener {
         next.addActionListener(this);
         ileIteracji.addActionListener(this);
         restart.addActionListener(this);
+        instrukcja.addActionListener(this);
         poIluZapisac.addActionListener(this);
         nazwaDozapisu.addActionListener(this);
 
@@ -76,6 +95,7 @@ public class LifePanel extends JPanel implements ActionListener {
         nazwaDozapisu.setBounds(25,470, 150, 25);
         ktoraIteracja.setBounds(500, 632, 200, 100);
         ktoraIteracja.setFont(new Font("Plain", Font.BOLD,20));
+        instrukcja.setBounds(55,645);
 
         ileIteracjiLabel.setFont(new Font("Serif", Font.BOLD,16));
         nazwaDoZapisuLabel.setFont(new Font("Serif", Font.BOLD,16));
@@ -107,8 +127,8 @@ public class LifePanel extends JPanel implements ActionListener {
                     board.setSize(board.getBoardSize() / board.wymiar);
                 }
             } else if (source == start) {
-                iteratorRoboczy = 0;
-                timer.start();
+                    iteratorRoboczy = 0;
+                    timer.start();
             } else if (source == next) {
                 mapa.update();
                 iteratorRoboczy++;
@@ -142,6 +162,8 @@ public class LifePanel extends JPanel implements ActionListener {
                 board.setSize(board.getBoardSize() / board.wymiar);
                 iteratorRoboczy = 0;
                 ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+            } else if(source == instrukcja) {
+                JOptionPane.showMessageDialog(null, message);
             }
 
             repaint();
