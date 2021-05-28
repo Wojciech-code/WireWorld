@@ -14,6 +14,7 @@ public class LifePanel extends JPanel implements ActionListener {
 
     int liczbaIteracji = 10;
     int iteratorRoboczy = 0;
+    Boolean data = false;
 
     int liczbaPoIluzapiac =0;
     String nazwaPliku;
@@ -125,14 +126,23 @@ public class LifePanel extends JPanel implements ActionListener {
                     board.setMap(reader.setMap());
                     board.wymiar = mapa.getRows();
                     board.setSize(board.getBoardSize() / board.wymiar);
+                    data = true;
                 }
             } else if (source == start) {
+                if(data) {
                     iteratorRoboczy = 0;
                     timer.start();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+                }
             } else if (source == next) {
-                mapa.update();
-                iteratorRoboczy++;
-                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                if(data) {
+                    mapa.update();
+                    iteratorRoboczy++;
+                    ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+                }
             } else if (timer.isRunning()) {
                 mapa.update();
                 iteratorRoboczy++;
@@ -153,15 +163,19 @@ public class LifePanel extends JPanel implements ActionListener {
                 liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
                 System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
             } else if( source == restart){
-                Reader reader = new Reader();
-                reader.setFilepath(filePath);
-                reader.read();
-                mapa = reader.setMap();
-                board.setMap(reader.setMap());
-                board.wymiar = mapa.getRows();
-                board.setSize(board.getBoardSize() / board.wymiar);
-                iteratorRoboczy = 0;
-                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                if(data) {
+                    Reader reader = new Reader();
+                    reader.setFilepath(filePath);
+                    reader.read();
+                    mapa = reader.setMap();
+                    board.setMap(reader.setMap());
+                    board.wymiar = mapa.getRows();
+                    board.setSize(board.getBoardSize() / board.wymiar);
+                    iteratorRoboczy = 0;
+                    ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+                }
             } else if(source == instrukcja) {
                 JOptionPane.showMessageDialog(null, message);
             }
