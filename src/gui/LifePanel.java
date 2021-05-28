@@ -46,7 +46,7 @@ public class LifePanel extends JPanel implements ActionListener {
             "Po wymiarze mapy neleży określić bramki logiczne wraz z położeniem oraz konfiguracją.\n" +
             "Na końcu należy podać pojedyncze komórki wraz z położeniem.\n" +
             "Format:\n" +
-            "<Wymiar>" +
+            "<Wymiar>\n" +
             "<Bramka logiczna> <Wiersz> <Kolumna> <Konfiguracja>\n" +
             "<Pojedyncza komórka> <Wiersz> <Kolumna>\n" +
             "Dostępne bramki logiczne:\n" +
