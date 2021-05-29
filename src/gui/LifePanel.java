@@ -17,7 +17,7 @@ public class LifePanel extends JPanel implements ActionListener {
     Boolean data = false;
 
 
-    int delay = 650;
+    int delay = 550;
     Timer timer = new Timer(delay, this);
     File selected;
     private  String filePath;

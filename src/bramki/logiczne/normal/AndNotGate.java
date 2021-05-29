@@ -46,6 +46,7 @@ public class AndNotGate extends Gate {
                     ( x == row+7 && y == column+2))
             {
                 c.setConductor();
+                c.setGate();
             }
 
         }

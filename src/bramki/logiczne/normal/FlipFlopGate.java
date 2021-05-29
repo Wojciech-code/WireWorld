@@ -50,6 +50,7 @@ public class FlipFlopGate extends Gate {
                     (x == row + 8 && y == column + 2)
             ) {
                 c.setConductor();
+                c.setGate();
             }
 
         }

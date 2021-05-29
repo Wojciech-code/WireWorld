@@ -46,6 +46,7 @@ public class XorGate extends Gate {
 
             {
                 c.setConductor();
+                c.setGate();
             }
 
         }

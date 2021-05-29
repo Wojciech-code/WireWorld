@@ -31,6 +31,7 @@ public class Diode extends Gate {
                     ( x == row && y == column+7) )
             {
                 c.setConductor();
+                c.setGate();
             }
 
         }

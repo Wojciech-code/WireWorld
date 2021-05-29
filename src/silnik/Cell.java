@@ -11,7 +11,8 @@ public class Cell {
     private int row;
     private int column;
     private int state;
-    int numberOfHeads;
+    protected int numberOfHeads;
+    private boolean isGate = false;
 
     public Cell(int row, int column){
         this.row = row;
@@ -48,5 +49,13 @@ public class Cell {
     }
     public int getRow(){
         return row;
+    }
+
+    public void setGate() {
+        isGate = true;
+    }
+
+    public boolean getIsGate(){
+        return isGate;
     }
 }
