@@ -56,7 +56,11 @@ public class LifePanel extends JPanel implements ActionListener {
             "Pojedyncze komórki:\n" +
             "Head, Tail, Empty\n" +
             "Jeśli liczba iteracji nie zostanie podana program domyślnie przyjmuje 10.\n" +
-            "Zatwierdzaj wprowadzone dane Enterem :).";
+            "Możesz dodawać komórki na mapie również ręcznie.\n" +
+            "Kliknięcie na pustą komórkę spowoduje ustawienie przewodnika.\n" +
+            "Kliknięcie na przewodnik spowoduje ustawienie głowy.\n" +
+            "Kliknięcie na głowę spowoduje ustawienie ogona.\n" +
+            "Kliknięcie na ogon spowoduje ustawienie pustej komórki";
 
 
     public LifePanel() {
@@ -125,7 +129,7 @@ public class LifePanel extends JPanel implements ActionListener {
                     mapa = reader.setMap();
                     board.setMap(reader.setMap());
                     board.wymiar = mapa.getRows();
-                    board.setSize(board.getBoardSize() / board.wymiar);
+                    board.setSizeRect(board.getBoardSize() / board.wymiar);
                     data = true;
                 }
             } else if (source == start) {
@@ -170,7 +174,7 @@ public class LifePanel extends JPanel implements ActionListener {
                     mapa = reader.setMap();
                     board.setMap(reader.setMap());
                     board.wymiar = mapa.getRows();
-                    board.setSize(board.getBoardSize() / board.wymiar);
+                    board.setSizeRect(board.getBoardSize() / board.wymiar);
                     iteratorRoboczy = 0;
                     ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
                 }else{
