@@ -144,7 +144,12 @@ public class LifePanel extends JPanel implements ActionListener {
                 System.out.println("liczba iteracji:" + liczbaIteracji);
             } else if (source == save) {
                 JFileChooser chooser2 = new JFileChooser();
-                chooser2.showSaveDialog(null);
+                int decision2 = chooser2.showSaveDialog(null);
+                if(decision2 == JFileChooser.APPROVE_OPTION){
+                    File file = chooser2.getSelectedFile();
+                    System.out.println(file);
+                    // tutaj trzeba dopisać zapisywanie do pliku + poprawić klasy odpowiadające za to
+                }
 
             } else if( source == restart){
                 if(data) {
