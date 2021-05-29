@@ -16,8 +16,6 @@ public class LifePanel extends JPanel implements ActionListener {
     int iteratorRoboczy = 0;
     Boolean data = false;
 
-    int liczbaPoIluzapiac =0;
-    String nazwaPliku;
 
     int delay = 650;
     Timer timer = new Timer(delay, this);
@@ -29,14 +27,9 @@ public class LifePanel extends JPanel implements ActionListener {
     public MyButton open = new MyButton("Open");
     public MyButton next = new MyButton("Next");
     public MyButton restart = new MyButton("Restart");
+    public MyButton save = new MyButton("Save");
     public JTextField ileIteracji = new JTextField();
     public JLabel ileIteracjiLabel = new JLabel("Liczba iteracji:");
-
-    public JTextField poIluZapisac = new JTextField();
-    public JLabel poIluZapisacLabel = new JLabel("Po ilu iteracjach zapisać:");
-
-    public JLabel nazwaDoZapisuLabel = new JLabel("Nazwa pliku do zapisu:");
-    public JTextField nazwaDozapisu = new JTextField();
 
     public JLabel ktoraIteracja = new JLabel("Iteracja: " + 0);
     public MyButton instrukcja = new MyButton("Instrukcja");
@@ -55,7 +48,6 @@ public class LifePanel extends JPanel implements ActionListener {
             "Normal, Reversed, Down\n" +
             "Pojedyncze komórki:\n" +
             "Head, Tail, Empty\n" +
-            "Jeśli liczba iteracji nie zostanie podana program domyślnie przyjmuje 10.\n" +
             "Możesz dodawać komórki na mapie również ręcznie.\n" +
             "Kliknięcie na pustą komórkę spowoduje ustawienie przewodnika.\n" +
             "Kliknięcie na przewodnik spowoduje ustawienie głowy.\n" +
@@ -69,42 +61,34 @@ public class LifePanel extends JPanel implements ActionListener {
         add(start);
         add(next);
         add(restart);
+        add(save);
         add(instrukcja);
         add(ileIteracji);
         add(ileIteracjiLabel);
         add(ktoraIteracja);
-        add(poIluZapisac);
-        add(poIluZapisacLabel);
-        add(nazwaDozapisu);
-        add(nazwaDoZapisuLabel);
 
         open.addActionListener(this);
         start.addActionListener(this);
         next.addActionListener(this);
         ileIteracji.addActionListener(this);
         restart.addActionListener(this);
+        save.addActionListener(this);
         instrukcja.addActionListener(this);
-        poIluZapisac.addActionListener(this);
-        nazwaDozapisu.addActionListener(this);
 
         board.setBounds(245, 15, board.getBoardSize(), board.getBoardSize());
         open.setBounds(55, 35);
         start.setBounds(55, 100);
         next.setBounds(55, 165);
         restart.setBounds(55, 230);
-        ileIteracji.setBounds(64,350, 25, 25);
-        ileIteracjiLabel.setBounds(35,310,200 ,50 );
-        poIluZapisacLabel.setBounds(25,370,200 ,50 );
-        nazwaDoZapisuLabel.setBounds(25,430,200 ,50 );
-        poIluZapisac.setBounds(75,410, 25, 25);
-        nazwaDozapisu.setBounds(25,470, 150, 25);
+        save.setBounds(55, 295);
+        ileIteracji.setBounds(78,400, 35, 25);
+        ileIteracjiLabel.setBounds(52,360,200 ,50 );
+
         ktoraIteracja.setBounds(500, 632, 200, 100);
         ktoraIteracja.setFont(new Font("Plain", Font.BOLD,20));
         instrukcja.setBounds(55,645);
 
         ileIteracjiLabel.setFont(new Font("Serif", Font.BOLD,16));
-        nazwaDoZapisuLabel.setFont(new Font("Serif", Font.BOLD,16));
-        poIluZapisacLabel.setFont(new Font("Serif", Font.BOLD,16));
 
         setSize(1000, 750);
         setLayout(null);
@@ -158,14 +142,10 @@ public class LifePanel extends JPanel implements ActionListener {
             } else if (source == ileIteracji) {
                 liczbaIteracji = Integer.parseInt(ileIteracji.getText());
                 System.out.println("liczba iteracji:" + liczbaIteracji);
-            } else if (source == nazwaDozapisu) {
-                nazwaPliku = nazwaDozapisu.getText();
-                System.out.println("nazwa pliku " + nazwaPliku);
-                SaveToFile save = new SaveToFile();
-                save.SaveToFile(liczbaPoIluzapiac, filePath, nazwaPliku);
-            } else if (source == poIluZapisac) {
-                liczbaPoIluzapiac = Integer.parseInt(poIluZapisac.getText());
-                System.out.println("po ilu zapisac: " + liczbaPoIluzapiac);
+            } else if (source == save) {
+                JFileChooser chooser2 = new JFileChooser();
+                chooser2.showSaveDialog(null);
+
             } else if( source == restart){
                 if(data) {
                     Reader reader = new Reader();
