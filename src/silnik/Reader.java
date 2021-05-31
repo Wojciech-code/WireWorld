@@ -46,6 +46,8 @@ public class Reader {
                             d = new DiodeR(m);
                             d.setGate(row, column);
                         }
+                    }else if (s[0].equals("Empty")) {
+                        Empty.setEmpty(m, row, column);
                     } else if (s[0].equals("Head")) {
                         Head.setHead(m, row, column);
                     } else if (s[0].equals("Tail")) {

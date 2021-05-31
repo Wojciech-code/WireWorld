@@ -1,5 +1,6 @@
 package gui;
 
+import silnik.Cell;
 import silnik.Map;
 import silnik.Reader;
 import silnik.pisanieDoPliku.SaveToFile;
@@ -20,9 +21,11 @@ public class LifePanel extends JPanel implements ActionListener {
     int delay = 550;
     Timer timer = new Timer(delay, this);
     File selected;
-    private  String filePath;
+    File file;
+    private String filePath;
+    private String filePath2;
     Map mapa;
-    Board  board = new Board();
+    Board board = new Board();
     public MyButton start = new MyButton("Start");
     public MyButton open = new MyButton("Open");
     public MyButton next = new MyButton("Next");
@@ -81,14 +84,14 @@ public class LifePanel extends JPanel implements ActionListener {
         next.setBounds(55, 165);
         restart.setBounds(55, 230);
         save.setBounds(55, 295);
-        ileIteracji.setBounds(78,400, 35, 25);
-        ileIteracjiLabel.setBounds(52,360,200 ,50 );
+        ileIteracji.setBounds(78, 400, 35, 25);
+        ileIteracjiLabel.setBounds(52, 360, 200, 50);
 
         ktoraIteracja.setBounds(500, 632, 200, 100);
-        ktoraIteracja.setFont(new Font("Plain", Font.BOLD,20));
-        instrukcja.setBounds(55,645);
+        ktoraIteracja.setFont(new Font("Plain", Font.BOLD, 20));
+        instrukcja.setBounds(55, 645);
 
-        ileIteracjiLabel.setFont(new Font("Serif", Font.BOLD,16));
+        ileIteracjiLabel.setFont(new Font("Serif", Font.BOLD, 16));
 
         setSize(1000, 750);
         setLayout(null);
@@ -98,78 +101,81 @@ public class LifePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-            Object source = e.getSource();
-            if (source == open) {
+        Object source = e.getSource();
+        if (source == open) {
+            iteratorRoboczy = 0;
+            ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+            JFileChooser chooser = new JFileChooser();
+            int decision = chooser.showOpenDialog(null);
+            if (decision == JFileChooser.APPROVE_OPTION) {
+                selected = chooser.getSelectedFile();
+                filePath = selected.getAbsolutePath();
+                Reader reader = new Reader();
+                reader.setFilepath(filePath);
+                reader.read();
+                mapa = reader.setMap();
+                board.setMap(reader.setMap());
+                board.wymiar = mapa.getRows();
+                board.setSizeRect(board.getBoardSize() / board.wymiar);
+                data = true;
+            }
+        } else if (source == start) {
+            if (data) {
                 iteratorRoboczy = 0;
-                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-                JFileChooser chooser = new JFileChooser();
-                int decision = chooser.showOpenDialog(null);
-                if (decision == JFileChooser.APPROVE_OPTION) {
-                    selected = chooser.getSelectedFile();
-                    filePath = selected.getAbsolutePath();
-                    Reader reader = new Reader();
-                    reader.setFilepath(filePath);
-                    reader.read();
-                    mapa = reader.setMap();
-                    board.setMap(reader.setMap());
-                    board.wymiar = mapa.getRows();
-                    board.setSizeRect(board.getBoardSize() / board.wymiar);
-                    data = true;
-                }
-            } else if (source == start) {
-                if(data) {
-                    iteratorRoboczy = 0;
-                    timer.start();
-                }else{
-                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
-                }
-            } else if (source == next) {
-                if(data) {
-                    mapa.update();
-                    iteratorRoboczy++;
-                    ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
-                }
-            } else if (timer.isRunning()) {
+                timer.start();
+            } else {
+                JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+            }
+        } else if (source == next) {
+            if (data) {
                 mapa.update();
                 iteratorRoboczy++;
                 ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-                if (iteratorRoboczy % liczbaIteracji == 0) {
-                    timer.stop();
-                    iteratorRoboczy = 0;
-                }
-            } else if (source == ileIteracji) {
-                liczbaIteracji = Integer.parseInt(ileIteracji.getText());
-                System.out.println("liczba iteracji:" + liczbaIteracji);
-            } else if (source == save) {
-                JFileChooser chooser2 = new JFileChooser();
-                int decision2 = chooser2.showSaveDialog(null);
-                if(decision2 == JFileChooser.APPROVE_OPTION){
-                    File file = chooser2.getSelectedFile();
-                    System.out.println(file);
-                    // tutaj trzeba dopisać zapisywanie do pliku + poprawić klasy odpowiadające za to
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+            }
+        } else if (timer.isRunning()) {
+            mapa.update();
+            iteratorRoboczy++;
+            ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+            if (iteratorRoboczy % liczbaIteracji == 0) {
+                timer.stop();
+                iteratorRoboczy = 0;
+            }
+        } else if (source == ileIteracji) {
+            liczbaIteracji = Integer.parseInt(ileIteracji.getText());
+            System.out.println("liczba iteracji:" + liczbaIteracji);
+        } else if (source == save) {
+            JFileChooser chooser2 = new JFileChooser();
+            int decision2 = chooser2.showSaveDialog(null);
+            if (decision2 == JFileChooser.APPROVE_OPTION) {
+                file = chooser2.getSelectedFile();
+                filePath2 = file.getAbsolutePath();
 
-            } else if( source == restart){
-                if(data) {
-                    Reader reader = new Reader();
-                    reader.setFilepath(filePath);
-                    reader.read();
-                    mapa = reader.setMap();
-                    board.setMap(reader.setMap());
-                    board.wymiar = mapa.getRows();
-                    board.setSizeRect(board.getBoardSize() / board.wymiar);
-                    iteratorRoboczy = 0;
-                    ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
-                }
-            } else if(source == instrukcja) {
-                JOptionPane.showMessageDialog(null, message);
+                SaveToFile save = new SaveToFile();
+                save.SaveToFile(liczbaIteracji, filePath, filePath2, mapa);
+                // tutaj trzeba dopisać zapisywanie do pliku + poprawić klasy odpowiadające za to
             }
 
-            repaint();
+        } else if (source == restart) {
+            if (data) {
+                Reader reader = new Reader();
+                reader.setFilepath(filePath);
+                reader.read();
+                mapa = reader.setMap();
+                board.setMap(reader.setMap());
+                board.wymiar = mapa.getRows();
+                board.setSizeRect(board.getBoardSize() / board.wymiar);
+                iteratorRoboczy = 0;
+                ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
+            } else {
+                JOptionPane.showMessageDialog(null, "Błąd: dane wejściowe");
+            }
+        } else if (source == instrukcja) {
+            JOptionPane.showMessageDialog(null, message);
         }
+
+        repaint();
+    }
 
 }
