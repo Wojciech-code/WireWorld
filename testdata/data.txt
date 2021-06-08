@@ -1,4 +1,4 @@
-60
+55
 FlipFlopGate 1 2 Down
 XorGate 1 15 Down
 Diode 1 27 Down

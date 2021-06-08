@@ -1,6 +1,5 @@
 package gui;
 
-import silnik.Cell;
 import silnik.Map;
 import silnik.Reader;
 import silnik.pisanieDoPliku.SaveToFile;
@@ -29,7 +28,7 @@ public class LifePanel extends JPanel implements ActionListener {
     public MyButton start = new MyButton("Start");
     public MyButton open = new MyButton("Open");
     public MyButton next = new MyButton("Next");
-    public MyButton restart = new MyButton("Restart");
+    public MyButton restart = new MyButton("Reset");
     public MyButton save = new MyButton("Save");
     public JTextField ileIteracji = new JTextField();
     public JLabel ileIteracjiLabel = new JLabel("Liczba iteracji:");
@@ -115,8 +114,8 @@ public class LifePanel extends JPanel implements ActionListener {
                 reader.read();
                 mapa = reader.setMap();
                 board.setMap(reader.setMap());
-                board.wymiar = mapa.getRows();
-                board.setSizeRect(board.getBoardSize() / board.wymiar);
+                board.sizeFromData = mapa.getRows();
+                board.setSizeRect(board.getBoardSize() / board.sizeFromData);
                 data = true;
             }
         } else if (source == start) {
@@ -154,7 +153,6 @@ public class LifePanel extends JPanel implements ActionListener {
 
                 SaveToFile save = new SaveToFile();
                 save.SaveToFile(liczbaIteracji, filePath, filePath2, mapa);
-                // tutaj trzeba dopisać zapisywanie do pliku + poprawić klasy odpowiadające za to
             }
 
         } else if (source == restart) {
@@ -164,8 +162,8 @@ public class LifePanel extends JPanel implements ActionListener {
                 reader.read();
                 mapa = reader.setMap();
                 board.setMap(reader.setMap());
-                board.wymiar = mapa.getRows();
-                board.setSizeRect(board.getBoardSize() / board.wymiar);
+                board.sizeFromData = mapa.getRows();
+                board.setSizeRect(board.getBoardSize() / board.sizeFromData);
                 iteratorRoboczy = 0;
                 ktoraIteracja.setText("Iteracja: " + iteratorRoboczy);
             } else {

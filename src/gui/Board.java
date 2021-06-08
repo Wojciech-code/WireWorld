@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 public class Board extends JPanel implements MouseListener {
 
     private Map mapa;
-    protected int wymiar;
+    protected int sizeFromData;
     private int boardSize = 650;
     private int sizeRect;
 
@@ -23,7 +23,7 @@ public class Board extends JPanel implements MouseListener {
 
     public void grid(Graphics g) {
 
-        if (wymiar != 0) {
+        if (sizeFromData != 0) {
             g.setColor(Color.gray);
             for (int i = 0; i <= boardSize / sizeRect; i++) {
                 g.drawLine(0, sizeRect * i, boardSize, i * sizeRect);
@@ -40,7 +40,7 @@ public class Board extends JPanel implements MouseListener {
 
     public void rect(Graphics g) {
 
-        if (wymiar != 0) {
+        if (sizeFromData != 0) {
             for (Cell c : mapa) {
                 if (c.getState() == 1) {
                     g.setColor(Color.ORANGE);
@@ -73,18 +73,18 @@ public class Board extends JPanel implements MouseListener {
         if(sizeRect != 0) {
             int x = e.getX() / sizeRect;
             int y = e.getY() / sizeRect;
-            for(Cell c : mapa){
-                if(c.getRow() == y && c.getColumn() == x){
-                    if(c.getState() == 0){
+            for(Cell c : mapa) {
+                if (c.getRow() == y && c.getColumn() == x) {
+                    if (c.getState() == 0) {
                         c.setConductor();
-                    }else if(c.getState() == 1){
+                    } else if (c.getState() == 1) {
                         c.setHead();
-                    }else if(c.getState() == 3){
+                    } else if (c.getState() == 3) {
                         c.setTail();
-                    }else if(c.getState() == 2)
+                    } else if (c.getState() == 2) {
                         c.setEmpty();
+                    }
                 }
-
             }
             repaint();
         }
